@@ -3,10 +3,10 @@ import { ResponseData } from "../../core/response"
 import { TokenDto } from "./token.dto"
 
 export class LoginDto {
-	@ApiProperty({ example: "admin" })
+	@ApiProperty()
 	login: string
 
-	@ApiProperty({ example: "admin" })
+	@ApiProperty()
 	password: string
 }
 
