@@ -3,7 +3,7 @@ import { CreateCounterpartyDto } from "./dto/create-counterparty.dto"
 import { UpdateCounterpartyDto } from "./dto/update-counterparty.dto"
 import { InjectRepository } from "@nestjs/typeorm"
 import { CounterpartyEntity } from "./entities/counterparty.entity"
-import { Like, Repository } from "typeorm"
+import { Like, Repository, Not } from "typeorm"
 import { ResponseData, responseData } from "../core/response"
 import {
 	ResponseCounterpartyDto,
@@ -130,6 +130,16 @@ export class CounterpartyService {
 			const counterparty = await this.counterpartyRepository.findOne({
 				where: { id }
 			})
+			const isCounterparty = await this.counterpartyRepository.findOne({
+				where: {
+					name: updateCounterpartyDto.name,
+					unn: updateCounterpartyDto.unn,
+					id: Not(id)
+				}
+			})
+			if(!!isCounterparty){
+				throw new Error("exists")
+			}
 			if (!counterparty) {
 				throw new Error("null")
 			}
@@ -140,6 +150,15 @@ export class CounterpartyService {
 			await this.counterpartyRepository.save(updateCounterparty)
 			return responseData(200, "Контрагент успешно обновлён")
 		} catch (e) {
+			if (e.message == "exists") {
+				throw new HttpException(
+					responseData(
+						400,
+						"Такой конрагент c таким названием и УНН уже существует"
+					),
+					400
+				)
+			}
 			if (e.message == "null") {
 				throw new HttpException(responseData(400, "Контрагент не найден"), 400)
 			}
