@@ -1,0 +1,43 @@
+table {
+
+  th{
+    @apply text-start;
+  }
+
+  td {
+    @apply text-start;
+  }
+
+  thead{
+
+    tr{
+      @apply border-b-2 border-b-black;
+    }
+  }
+
+  tbody{
+
+    tr{
+      @apply border-b  border-b-black;
+    }
+  }
+}
+
+.butt-icon{
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.butt-icon-next{
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

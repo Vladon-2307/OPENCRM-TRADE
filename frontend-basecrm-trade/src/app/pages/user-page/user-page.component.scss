@@ -1,0 +1,24 @@
+table {
+
+  th{
+    @apply text-start;
+  }
+
+  td {
+    @apply text-start;
+  }
+
+  thead{
+
+    tr{
+      @apply border-b-2 border-b-black;
+    }
+  }
+
+  tbody{
+
+    tr{
+      @apply border-b  border-b-black;
+    }
+  }
+}

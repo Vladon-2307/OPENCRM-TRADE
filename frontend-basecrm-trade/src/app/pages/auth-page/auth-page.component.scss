@@ -1,0 +1,35 @@
+form{
+  @apply flex flex-col w-full max-w-80 mx-auto;
+
+  h1{
+    @apply text-center font-semibold;
+  }
+
+  input{
+    @apply border-b mt-5;
+
+    &::placeholder{
+      @apply text-neutral-800/70
+    }
+  }
+
+  span {
+    @apply text-red-600 text-sm;
+  }
+
+  button {
+    @apply rounded bg-blue-600 text-neutral-200 font-medium py-2  mt-5;
+
+    &:disabled {
+      @apply bg-neutral-400;
+    }
+  }
+}
+
+.container{
+  @apply flex h-full items-center;
+}
+
+
+
+

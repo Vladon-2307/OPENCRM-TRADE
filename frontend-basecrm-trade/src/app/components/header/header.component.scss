@@ -1,0 +1,30 @@
+header {
+  @apply flex justify-between px-10 py-2 items-center border-b border-b-neutral-900;
+
+  ul{
+    @apply flex;
+
+    li{
+      @apply cursor-pointer;
+
+      &:hover a{
+        @apply border-b border-b-blue-950;
+      }
+
+      a{
+        @apply px-1;
+      }
+    }
+  }
+
+  button{
+    @apply flex border border-neutral-900 rounded px-2 py-1 items-center;
+    &:hover{
+      @apply bg-blue-600/80;
+    }
+  }
+
+  .linkActive{
+    @apply border-b border-b-blue-600
+  }
+}

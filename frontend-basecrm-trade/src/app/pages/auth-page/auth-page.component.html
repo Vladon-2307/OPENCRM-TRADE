@@ -1,0 +1,18 @@
+<div class="container">
+  <form [formGroup]="authForm" (submit)="submit()">
+    <h1>АВТОРИЗАЦИЯ</h1>
+    <input
+      [ngClass]="isInvalidLogin()?'border-b-red-600':'border-b-neutral-950'"
+      type="text" placeholder="логин" formControlName="login">
+    @if (isInvalidLogin()){
+      <span>это поле не может быть пустым</span>
+    }
+    <input
+      [ngClass]="isInvalidPassword()?'border-b-red-600':'border-b-neutral-950'"
+      type="password" placeholder="пароль" formControlName="password">
+    @if (isInvalidPassword()){
+      <span>это поле не может быть пустым</span>
+    }
+    <button [disabled]="!authForm.valid" type="submit">войти</button>
+  </form>
+</div>

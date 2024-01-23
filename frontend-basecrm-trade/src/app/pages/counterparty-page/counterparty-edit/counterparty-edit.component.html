@@ -1,0 +1,51 @@
+<div class="flex justify-center items-center">
+  <form
+    [formGroup]="form"
+    (submit)="submit()"
+  >
+    <h1 class="text-center font-semibold text-xl">{{data.title}} контрагента</h1>
+    <label for="name">Наименование</label>
+    <input id="name" type="text" placeholder="Наименование" formControlName="name">
+    @if (this.form.controls['name'].getError('required') && this.form.controls['name'].touched){
+      <span class="error">Это поле обезательное</span>
+    }
+
+    <label for="account_number">№ банковского счёта</label>
+    <input id="account_number" type="text" placeholder="№ банковского счёта" formControlName="account_number">
+
+    <label for="bank_name">Название банка</label>
+    <input id="bank_name" type="text" placeholder="Название банка" formControlName="bank_name">
+
+    <label for="code_bank">Код банка</label>
+    <input id="code_bank" type="text" placeholder="Код банка" formControlName="code_bank">
+
+    <label for="legal_address">Юридический адрес</label>
+    <input id="legal_address" type="text" placeholder="Юридический адрес" formControlName="legal_address">
+    @if (this.form.controls['legal_address'].getError('required') && this.form.controls['legal_address'].touched){
+      <span class="error">Это поле обезательное</span>
+    }
+
+    <label for="mailing_address">Почтовый адрес</label>
+    <input id="mailing_address" type="text" placeholder="Почтовый адрес" formControlName="mailing_address">
+    @if (this.form.controls['mailing_address'].getError('required') && this.form.controls['mailing_address'].touched){
+      <span class="error">Это поле обезательное</span>
+    }
+
+    <label for="phone">№ телефона</label>
+    <input id="phone" type="text" placeholder="№ телефона" formControlName="phone">
+    @if (this.form.controls['phone'].getError('required') && this.form.controls['phone'].touched){
+      <span class="error">Это поле обезательное</span>
+    }
+
+    <label for="unn">УНН</label>
+    <input id="unn" type="text" placeholder="УНН" formControlName="unn">
+
+    <label for="okpo">ОКПО</label>
+    <input id="okpo" type="text" placeholder="ОКПО" formControlName="okpo">
+
+    <button class="bg-green-700 rounded text-center text-white mt-10 py-2" type="submit">
+      Сохранить
+    </button>
+  </form>
+  <button class="btn-close" (click)="close()"><mat-icon fontIcon="close"></mat-icon></button>
+</div>

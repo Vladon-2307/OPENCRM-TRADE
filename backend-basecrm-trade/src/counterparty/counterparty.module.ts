@@ -1,0 +1,12 @@
+import { Module } from '@nestjs/common'
+import { CounterpartyService } from './counterparty.service'
+import { CounterpartyController } from './counterparty.controller'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { CounterpartyEntity } from './entities/counterparty.entity'
+
+@Module({
+	imports: [TypeOrmModule.forFeature([CounterpartyEntity])],
+	controllers: [CounterpartyController],
+	providers: [CounterpartyService]
+})
+export class CounterpartyModule {}

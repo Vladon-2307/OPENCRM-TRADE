@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'ngx-toastr/toastr';
+
+html,
+body {
+  @apply h-full bg-neutral-300;
+}
+
+input {
+  @apply bg-transparent;
+  &:focus{
+    @apply outline-none;
+  }
+}
+

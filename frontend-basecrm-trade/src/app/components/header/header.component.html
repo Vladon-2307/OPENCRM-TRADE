@@ -1,0 +1,11 @@
+<header>
+  <ul class="flex gap-5">
+    @if (isAdmin()){
+      <li><a routerLink="user" routerLinkActive="linkActive">Пользователи</a></li>
+    }
+    <li><a routerLink="counterparty" routerLinkActive="linkActive">Контрагеты</a></li>
+  </ul>
+  <button (click)="logout()">
+    <mat-icon fontIcon="logout"></mat-icon>
+  </button>
+</header>

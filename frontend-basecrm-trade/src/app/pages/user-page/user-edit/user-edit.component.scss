@@ -1,0 +1,24 @@
+.btn-close{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.error{
+  @apply text-red-600 text-sm;
+}
+
+form{
+  min-width: 400px;
+  max-width: 400px;
+  @apply flex flex-col mx-auto mt-20;
+
+  label{
+    @apply mt-5;
+  }
+
+  input, select {
+    @apply border-b border-b-black;
+  }
+}
+

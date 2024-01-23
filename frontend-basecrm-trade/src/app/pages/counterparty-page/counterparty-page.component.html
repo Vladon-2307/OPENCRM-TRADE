@@ -1,0 +1,61 @@
+<div class="container mx-auto">
+  <form
+    class="flex gap-1 items-center mt-2"
+    [formGroup]="searchForm"
+    (ngSubmit)="getAll()"
+  >
+    <input class="border-b border-b-black" type="text" placeholder="поиск..." formControlName="search">
+    <button class="flex items-center" type="submit">
+      <mat-icon  fontIcon="search"></mat-icon>
+    </button>
+  </form>
+  <div class="flex justify-center items-center">
+    <button (click)="predPage()" class="flex items-center justify-center">
+      <mat-icon class="butt-icon" fontIcon="arrow_left"></mat-icon>
+    </button>
+    <p class="text-center">{{page}} / {{pages}}</p>
+    <button (click)="nextPage()" class="flex items-center justify-center">
+      <mat-icon class="butt-icon" fontIcon="arrow_right"></mat-icon>
+    </button>
+    <input class="w-16 border-b border-b-black" type="number" placeholder="№ стр." [(ngModel)]="inpage">
+    <button  (click)="toPage()" class="flex items-center justify-center">
+      <mat-icon class="" fontIcon="double_arrow_right"></mat-icon>
+    </button>
+  </div>
+  <table class="mt-3 w-full">
+    <thead>
+    <tr>
+      <th>№</th>
+      <th>Название</th>
+      <th>Адрес</th>
+      <th>№ тлефона</th>
+      <th class="w-40">
+        <button (click)="openCreate()" class="w-full text-white bg-green-700 rounded flex justify-center items-center">
+          <mat-icon fontIcon="add"></mat-icon>
+          Добавить
+        </button>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (counterparty of counterpartys; track $index ){
+        <tr>
+          <td class="pr-5">{{$index+1 + ((page -1 )*10)}}</td>
+          <td>{{counterparty.name}}</td>
+          <td>{{counterparty.mailing_address}}</td>
+          <td>{{counterparty.phone}}</td>
+          <td class="w-40">
+            <div class="flex justify-center h-full items-center gap-3">
+              <button (click)="openEdit(counterparty.id)">
+                <mat-icon fontIcon="edit"></mat-icon>
+              </button>
+              <button (click)="delete(counterparty.id)" class="text-red-600">
+                <mat-icon fontIcon="delete"></mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
