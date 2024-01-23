@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogContent, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatIcon} from "@angular/material/icon";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user.service";
@@ -63,10 +63,12 @@ export class UserEditComponent {
     if(this.data.title == 'Добавление'){
       if(this.form.valid) {
         this.userService.create(this.form.value)
-        if(this.userService.editStatus() == 201){
-          this.userService.editStatus.set(0)
-          this.dialogRef.close('ok')
-        }
+        setTimeout(() => {
+          if(this.userService.editStatus() == 201){
+            this.userService.editStatus.set(0)
+            this.dialogRef.close('ok')
+          }
+        }, 500)
       }
     }
     if(this.data.title == 'Редоктирование'){
@@ -81,10 +83,12 @@ export class UserEditComponent {
           data = this.form.value
         }
         this.userService.update(this.id, data)
-        if(this.userService.editStatus() == 200){
-          this.userService.editStatus.set(0)
-          this.dialogRef.close('ok')
-        }
+        setTimeout(() => {
+          if(this.userService.editStatus() == 200){
+            this.userService.editStatus.set(0)
+            this.dialogRef.close('ok')
+          }
+        }, 500)
       }
     }
   }

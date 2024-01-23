@@ -75,10 +75,12 @@ export class CounterpartyEditComponent {
     if(this.data.title == 'Добавление'){
       if(this.form.valid){
         this.counterpartyService.create(this.form.value)
-        if(this.counterpartyService.editStatus() == 201){
-          this.counterpartyService.editStatus.set(0)
-          this.dialogRef.close('ok')
-        }
+        setTimeout(() => {
+          if(this.counterpartyService.editStatus() == 201){
+            this.counterpartyService.editStatus.set(0)
+            this.dialogRef.close('ok')
+          }
+        }, 500)
       }
     }
     if(this.data.title == 'Редоктирование'){
@@ -95,10 +97,12 @@ export class CounterpartyEditComponent {
         if(!!this.form.controls['unn'].value){ data = {...data, unn:this.form.controls['unn'].value}}
         if(!!this.form.controls['okpo'].value){ data = {...data, okpo:this.form.controls['okpo'].value}}
        this.counterpartyService.update(this.id, data)
-        if(this.counterpartyService.editStatus() == 200){
-          this.counterpartyService.editStatus.set(0)
-          this.dialogRef.close('ok')
-        }
+        setTimeout(() => {
+          if(this.counterpartyService.editStatus() == 200){
+            this.counterpartyService.editStatus.set(0)
+            this.dialogRef.close('ok')
+          }
+        }, 500)
       }
     }
   }
